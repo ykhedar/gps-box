@@ -41,6 +41,19 @@ sudo systemctl status aeroinspekt.service
 Now from next boot onwards the service will be on during boot automatically.
 
 
+## Add the user into sudoers list to execute the shutdown command.
+
+```bash
+sudo visudo
+```
+
+Add the following line at the end of the file.
+
+```bash
+debian ALL=/sbin/shutdown
+debian ALL=NOPASSWD: /sbin/shutdown
+```
+
 
 # Don't
 - Don't remove the Event, gps-box folders and the *.ovpn file found in the /home/debian of the boxes
