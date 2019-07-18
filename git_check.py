@@ -20,7 +20,7 @@ while True:
 	git_status=os.popen('git remote show origin').read()
 
 	if "local out of date" in git_status:
-		pull_result=os.popen('git pull origin master').read()
+		pull_result=os.popen('cd ~ && rm -rf gps-box/ && git clone https://github.com/ykhedar/gps-box.git').read()
 		log_file.write(datetime.datetime.now().isoformat() + "," + pull_result + "\n")
 		log_file.write(datetime.datetime.now().isoformat() + ", doing a system restart to make changes in git take effect." + "\n")
 		shutdow_result=os.popen("shutdown -r now")
