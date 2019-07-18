@@ -28,6 +28,7 @@ while True:
 
 	else:
 		log_file.write(datetime.datetime.now().isoformat() + ", git is already updated. Waiting for 1 minutes" + "\n")
+	
 	time.sleep(60)
 
 log_file.close()
