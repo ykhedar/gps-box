@@ -17,7 +17,7 @@ log_file = open(GIT_LOG_FILE, "wa", buffering=1)
 
 while True:
 	os.popen('')
-	git_status=os.popen('cd ~/gps-box && git remote show origin').read()
+	git_status=os.popen('cd /home/debian/gps-box/ && git remote show origin').read()
 
 	if "local out of date" in git_status:
 		pull_result=os.popen('cd ~ && rm -rf gps-box/ && git clone https://github.com/ykhedar/gps-box.git').read()
