@@ -14,7 +14,7 @@ There are three main scripts:
 python-yaml
 python-serial
 
-# Howto    
+# Howto:    
 For first installation:  
 1. Copy the ankommen.service to /etc/systemd/system/ folder
 
