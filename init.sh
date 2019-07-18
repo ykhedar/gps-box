@@ -36,4 +36,4 @@ cd /home/debian/gps-box && python main.py &
 cd /home/debian/gps-box && python internet_check.py &
 
 # Start the git repo status script
-cd /home/debian/ && python gps-box/git_check.py &
+cd /home/debian/gps-box && python git_check.py &
