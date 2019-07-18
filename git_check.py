@@ -6,7 +6,7 @@ import datetime
 
 MAIN_LOG_DIR="/home/debian/Event/projects/GWR/record/aeroinspekt/"
 CURRENT_DATE_TIME=datetime.datetime.now().isoformat().replace(":", "-")
-GIT_LOG_DIR=MAIN_LOG_DIR+"logs/internet/"
+GIT_LOG_DIR=MAIN_LOG_DIR+"logs/git/"
 GIT_LOG_FILE=GIT_LOG_DIR+CURRENT_DATE_TIME+".log"
 
 
@@ -20,7 +20,7 @@ while True:
 	git_status=os.popen('cd /home/debian/gps-box/ && git remote show origin').read()
 
 	if "local out of date" in git_status:
-		pull_result=os.popen('cd ~ && rm -rf gps-box/ && git clone https://github.com/ykhedar/gps-box.git').read()
+		pull_result=os.popen('cd /home/debian && rm -rf gps-box/ && git clone https://github.com/ykhedar/gps-box.git').read()
 		log_file.write(datetime.datetime.now().isoformat() + "," + pull_result + "\n")
 		log_file.write(datetime.datetime.now().isoformat() + ", doing a system restart to make changes in git take effect." + "\n")
 		shutdow_result=os.popen("shutdown -r now").read()
