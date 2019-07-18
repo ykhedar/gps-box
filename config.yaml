@@ -1,0 +1,24 @@
+BOX1: 
+  IP: '10.8.0.11'
+  OFFSET: '9999'
+  KRANID: '7S'
+  
+BOX2: 
+  IP: '10.8.0.21'
+  OFFSET: '9999'
+  KRANID: '7B'
+
+BOX3: 
+  IP: '10.8.0.31'
+  OFFSET: '9999'
+  KRANID: '8S'
+
+BOX5: 
+  IP: '10.8.0.51'
+  OFFSET: '9999'
+  KRANID: '8B'
+
+BOX4: 
+  IP: '10.8.0.41'
+  OFFSET: '9999'
+  KRANID: '9S'
