@@ -86,9 +86,9 @@ this on the openvpn speed.
 ```bash
 sudo crontab -e
 ```
-Put this crontab with sudo.
+Put this crontab with sudo. This reboots the board every day at 03:00 hrs
 ```bash
-*/20 * * * * /sbin/shutdown -r now
+* 3 * * * * /sbin/shutdown -r now
 ```
 
 
