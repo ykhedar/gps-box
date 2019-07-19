@@ -33,7 +33,8 @@ while True:
 	logging.info("VPN is not active yet. Waiting 5 more seconds.")
 	time.sleep(5)
 
-MY_IP = iface_str.split("inet ")[1].split(" ")[0]
+ip_string = iface_str.split("inet ")[1].split(" ")[0]
+MY_IP = ip_string.split('/')[0]
 logging.info("My IP Address from VPN is: " + MY_IP)
 
 multicast_sender = mcast.MultiCastSender(MY_IP)
