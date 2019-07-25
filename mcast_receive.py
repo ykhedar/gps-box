@@ -22,7 +22,7 @@ s = socket.socket(addrinfo[0], socket.SOCK_DGRAM)
 s.bind(('0.0.0.0', MYPORT))
 
 # Join group
-mreq = socket.inet_aton(MYGROUP_4) + socket.inet_aton('10.8.0.6')
+mreq = socket.inet_aton(MYGROUP_4) + socket.inet_aton('10.8.0.101')
 s.setsockopt(socket.IPPROTO_IP, socket.IP_ADD_MEMBERSHIP, mreq)
 
 # Loop, printing any data we receive
