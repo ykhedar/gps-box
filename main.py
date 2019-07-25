@@ -76,8 +76,8 @@ while True:
 		msg.unpack()
 		location=19
 		if hasattr(msg, 'iTOW'):
-			string_payload = str(BOX_ID) + "," + str(msg.iTOW) + "," + str(msg.Longitude) + "," + str(msg.Latitude) + "," + str(OFFSET)+ "," + str(KRANID)+ "," + str(location) + "\n"
-			# BOX-ID, GPS-TIME, LONGITUDE, LATITUDE
+			string_payload = str(2063)+","+ str(msg.iTOW) + "," +str(BOX_ID) + "," + str(KRANID)+ "," + str(msg.Longitude) + "," + str(msg.Latitude) + "," + str(OFFSET)+ "," + str(location) + "\n"
+			# GPS-week, GPS-TimeOfWeek,BOX-ID,Crane-ID,LONGITUDE, LATITUDE, OFFSET, HASH
 			multicast_sender.send_data(string_payload)
 			pos_log_file.write(string_payload)
 
