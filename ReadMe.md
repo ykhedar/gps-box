@@ -81,6 +81,20 @@ this on the openvpn speed.
 
 - 
 
+## To make the RTC work, one needs to update the cape-overlays in beaglebone. Which is done as follows:
+```bash
+sudo apt update
+sudo apt upgrade bb-cape-overlays
+```
+This will update the overlay with RTC-D3231 which we are using for our project. Next one needs to 
+activate the overlay so that it will load during the boot before anything else and the RTC can be read by 
+the hwclock.
+
+Now update the /boot/uEnv.txt
+```bash
+uboot_overlay_addr4=/lib/firmware/BB-I2C2-RTC-DS3231.dtbo.dtbo
+```
+
 ## Crontab for restarting the boxes every 20 minutes.
 
 ```bash
