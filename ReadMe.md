@@ -95,6 +95,7 @@ Now update the /boot/uEnv.txt
 uboot_overlay_addr4=/lib/firmware/BB-I2C2-RTC-DS3231.dtbo.dtbo
 ```
 
+
 ## Crontab for restarting the boxes every 20 minutes.
 
 ```bash
