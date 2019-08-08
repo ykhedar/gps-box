@@ -4,8 +4,8 @@
 echo none > /sys/class/leds/beaglebone:green:usr0/trigger
 
 # UART1 ttyO1 = ttyS1
-/usr/bin/config-pin P9_24 uart
-/usr/bin/config-pin P9_26 uart
+#/usr/bin/config-pin P9_24 uart
+#/usr/bin/config-pin P9_26 uart
 
 # RTC Setup
 #echo ds1307 0x68 | sudo tee /sys/class/i2c-adapter/i2c-2/new_device
