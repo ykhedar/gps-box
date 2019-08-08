@@ -93,7 +93,8 @@ the hwclock.
 
 Now update the /boot/uEnv.txt
 ```bash
-uboot_overlay_addr4=/lib/firmware/BB-I2C2-RTC-DS3231.dtbo.dtbo
+uboot_overlay_addr4=/lib/firmware/BB-I2C2-RTC-DS3231.dtbo
+uboot_overlay_addr5=/lib/firmware/BB-UART1-00A0.dtbo
 ```
 
 
