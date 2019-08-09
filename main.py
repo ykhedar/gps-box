@@ -66,20 +66,24 @@ BOX_POS_LOG_FILE=BOX_POS_LOG_DIR+CURRENT_DATE_TIME+".log"
 pos_log_file=open(BOX_POS_LOG_FILE, "wa",buffering=1)
 logging.info("Logging Processed data to the file: " + str(BOX_POS_LOG_FILE))
 logging.info("Starting Data acquisition loop from UBLOX. ")
+GPS_WEEK="null"
 while True:
 	msg = dev.receive_message(ignore_eof=True)
 	if msg is None:
 		logging.info("No Message.")
 		break
-
+	if msg.name() == "NAV_TIMEGPS":
+		msg.unpack()
+		GPS_WEEK=str(msg.week)
 	if msg.name() == "NAV_POSLLH":
 		msg.unpack()
 		location=19
 		if hasattr(msg, 'iTOW'):
-			string_payload = str(2063)+","+ str(msg.iTOW) + "," +str(BOX_ID) + "," + str(KRANID)+ "," + str(msg.Longitude) + "," + str(msg.Latitude) + "," + str(OFFSET)+ "," + str(location) + "\n"
+			string_payload = GPS_WEEK+","+ str(msg.iTOW) + "," +str(BOX_ID) + "," + str(KRANID)+ "," + str(msg.Longitude) + "," + str(msg.Latitude) + "," + str(OFFSET)
 			# GPS-week, GPS-TimeOfWeek,BOX-ID,Crane-ID,LONGITUDE, LATITUDE, OFFSET, HASH
-			multicast_sender.send_data(string_payload)
-			pos_log_file.write(string_payload)
+			msg_to_send = string_payload + "," + str(len(string_payload))
+			multicast_sender.send_data(msg_to_send)
+			pos_log_file.write(msg_to_send)
 
 pos_log_file.close()
 
