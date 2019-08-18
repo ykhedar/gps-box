@@ -83,7 +83,8 @@ while True:
 			# GPS-week, GPS-TimeOfWeek,BOX-ID,Crane-ID,LONGITUDE, LATITUDE, OFFSET, HASH
 			msg_to_send = string_payload + "," + str(len(string_payload))
 			multicast_sender.send_data(msg_to_send)
-			pos_log_file.write(msg_to_send)
+			msg_to_write = msg_to_send + "\n"
+			pos_log_file.write(msg_to_write)
 
 pos_log_file.close()
 
