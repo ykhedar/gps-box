@@ -1,5 +1,22 @@
 # gps-box
+## Installing Debian on Beaglebone Black.
+### Follow the instructions here:
+https://beagleboard.org/getting-started
+https://www.youtube.com/watch?v=oRGrm8RfGCE
 
+Basically:
+1. Download the file bone-eMMC-flasher-debian-9.11-console-armhf-2019-12-01-1gb.img.xz from
+https://elinux.org/Beagleboard:BeagleBoneBlack_Debian#Flashing_eMMC
+or a newer version. But note the 'eMMC-flasher' in the name. This is important
+2. Format the SD Card
+3. Flash the SD Card using BalenaEtcher (you dont have to decompress the image.)
+4. Insert the SD card into the BBB. Hold down the User/Boot button as shown in the tutorials, and power up 
+   either using the Barrel connector or a Mini USB cable. Release the button when all LEDs are steady.
+5. Wait unti the Flashing is done. Could be 4-5minutes. The LEDs would be steady and then go off. 
+6. Remove Power and Remove the SD Card.
+7. Now connect using the Mini USB cable to a computer for setting up. Done.
+
+ 
 This repository contains the scripts used to run 
 on the GPS Boxes of Project AeroInspekt.
 
