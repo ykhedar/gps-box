@@ -28,34 +28,19 @@ There are three main scripts:
 3. mcast.py: This is the class for multicast sender used in main.py 
    
 # Dependencies
-sudo apt update && sudo apt install git python-yaml python-serial openvpn
-
-
-# Howto:    
-Do the following command in the home folder of the debian
-
+1. Install Some dependencies and clone the git repository.
 ```bash
+sudo apt update && sudo apt install -y git python-yaml python-serial openvpn usbutils
 cd ~ && git clone https://github.com/ykhedar/gps-box.git
 ```
 
-copy the *.ovpn file in the home directory to enable the ovpn.
+2. Copy the *.ovpn file in the home directory to enable the ovpn.
 
-For first installation:  
-1. Copy the ankommen.service to /etc/systemd/system/ folder
-
+3. Copy the ankommen.service to /etc/systemd/system/ folder. Now enable the service. Then Either Restart the system or
+   Run start it manually for the first time to check if it works.
 ```bash
 sudo cp /home/debian/gps-box/aeroinspekt.service /etc/systemd/system/aeroinspekt.service
-```
-
-2. Now enable the service
-
-```bash
 sudo systemctl enable aeroinspekt.service
-```
-
-3. Start the service
-```bash
-sudo systemctl start aeroinspekt.service
 ```
 
 4. Check if the service is running
@@ -63,10 +48,7 @@ sudo systemctl start aeroinspekt.service
 sudo systemctl status aeroinspekt.service
 ```
 
-Now from next boot onwards the service will be on during boot automatically.
-
-
-## Add the user into sudoers list to execute the shutdown command.
+5. Add the user into sudoers list to execute the shutdown command.
 
 ```bash
 sudo visudo
@@ -93,9 +75,9 @@ The corresponding output is as follows:
 ROUTE_GATEWAY 192.168.1.1/255.255.255.0 IFACE=eth0 HWADDR=xx:xx:xx:xx:xx
 
 In this case the computer is connected to a local router.
- A sample log can be found in the logs/ directory of this repository.
+A sample log can be found in the logs/ directory of this repository.
  
- The log can be viewed with the following command
+The log can be viewed with the following command
  
  ```bash
  journalctl -u aeroinspekt.service
