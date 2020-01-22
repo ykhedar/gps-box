@@ -28,11 +28,18 @@ There are three main scripts:
 3. mcast.py: This is the class for multicast sender used in main.py 
    
 # Dependencies
-python-yaml
-python-serial
+sudo apt update && sudo apt install git python-yaml python-serial openvpn
 
 
 # Howto:    
+Do the following command in the home folder of the debian
+
+```bash
+cd ~ && git clone https://github.com/ykhedar/gps-box.git
+```
+
+copy the *.ovpn file in the home directory to enable the ovpn.
+
 For first installation:  
 1. Copy the ankommen.service to /etc/systemd/system/ folder
 
