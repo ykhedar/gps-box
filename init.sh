@@ -33,3 +33,7 @@ cd /home/debian/gps-box && python internet_check.py &
 
 # Start the git repo status script
 cd /home/debian/gps-box && python git_check.py &
+
+sleep 15
+
+cd /home/debian && sh start_str2str.sh
