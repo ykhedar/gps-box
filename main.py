@@ -84,7 +84,7 @@ while True:
 		location=19
 		if hasattr(msg, 'iTOW'):
 			string_payload = GPS_WEEK+","+ str(msg.iTOW) + "," +str(BOX_ID) + "," + str(KRANID)+ "," + \
-							 str(msg.Longitude) + "," + str(msg.Latitude) + "," + str(OFFSET) + "," + str(hAcc) + "," + \
+							 str(msg.Longitude) + "," + str(msg.Latitude) + "," + str(OFFSET) + "," + str(msg.hAcc) + "," + \
 			str(rtk_status)
 			# GPS-week, GPS-TimeOfWeek,BOX-ID,Crane-ID,LONGITUDE, LATITUDE, OFFSET, hAcc, RTK-Status, HASH
 			msg_to_send = string_payload + "," + str(len(string_payload))
