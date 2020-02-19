@@ -63,34 +63,31 @@ if not os.path.exists(os.path.dirname(BOX_POS_LOG_DIR)):
 
 BOX_POS_LOG_FILE=BOX_POS_LOG_DIR+CURRENT_DATE_TIME+".log"
 
-pos_log_file=open(BOX_POS_LOG_FILE, "wa",buffering=1)
+pos_log_file = open(BOX_POS_LOG_FILE, "wa",buffering=1)
 logging.info("Logging Processed data to the file: " + str(BOX_POS_LOG_FILE))
 logging.info("Starting Data acquisition loop from UBLOX. ")
-GPS_WEEK="null"
+GPS_WEEK = "null"
 rtk_status = 0
 while True:
 	msg = dev.receive_message(ignore_eof=True)
 	if msg is None:
 		logging.info("No Message.")
 		break
-	if msg.name() == "NAV_TIMEGPS":
-		msg.unpack()
-		GPS_WEEK=str(msg.week)
-	if msg.name() == "NAV_STATUS":
-		msg.unpack()
+	msg_name = msg.name()
+	msg.unpack()
+	if msg_name == "NAV_TIMEGPS":
+		GPS_WEEK = str(msg.week)
+	if msg_name == "NAV_STATUS":
 		rtk_status = bin(msg.flags)[8]
-	if msg.name() == "NAV_POSLLH":
-		msg.unpack()
-		location=19
+	if msg_name == "NAV_POSLLH":
 		if hasattr(msg, 'iTOW'):
 			string_payload = GPS_WEEK+","+ str(msg.iTOW) + "," +str(BOX_ID) + "," + str(KRANID)+ "," + \
-							 str(msg.Longitude) + "," + str(msg.Latitude) + "," + str(OFFSET) + "," + str(msg.hAcc) + "," + \
-			str(rtk_status)
-			# GPS-week, GPS-TimeOfWeek,BOX-ID,Crane-ID,LONGITUDE, LATITUDE, OFFSET, hAcc, RTK-Status, HASH
+							 str(msg.Longitude) + "," + str(msg.Latitude) + "," + str(OFFSET) + "," + \
+							 str(msg.hAcc) + "," + str(rtk_status)
+			# GPS-week, GPS-TimeOfWeek,BOX-ID,Crane-ID,LONGITUDE, LATITUDE, OFFSET, Horizontal Accuracy (mm), RTK-Status, HASH
 			msg_to_send = string_payload + "," + str(len(string_payload))
 			multicast_sender.send_data(msg_to_send)
 			msg_to_write = msg_to_send + "\n"
 			pos_log_file.write(msg_to_write)
-
 pos_log_file.close()
 
