@@ -30,11 +30,10 @@ There are three main scripts:
 # Dependencies
 1. Install Some dependencies and clone the git repository.
 ```bash
-sudo apt update && sudo apt install -y git python-yaml python-serial openvpn usbutils usb-modeswitch libusb-1.0
+sudo apt update && sudo apt install -y git python-yaml python-serial openvpn usbutils usb-modeswitch libusb-1.0 build-essential && sudo apt upgrade sudo apt upgrade bb-cape-overlays && rm -rf /var/lib/apt/lists/*
 
 cd ~ && git clone https://github.com/ykhedar/gps-box.git && git clone https://github.com/rtklibexplorer/RTKLIB.git
-
-cd ~/RTKLIB/app/str2str/gcc/ && make && sudo make install
+cd ~/RTKLIB/app/str2str/gcc/ && make && sudo make install && rm -rf ~/RTKLIB
 ```
 
 2. Copy the *.ovpn file in the home directory to enable the ovpn. From the folder boxes_copy
@@ -83,8 +82,10 @@ The corresponding output is as follows:
 ROUTE_GATEWAY 192.168.1.1/255.255.255.0 IFACE=eth0 HWADDR=xx:xx:xx:xx:xx
 
 In this case the computer is connected to a local router.
+
+## Viewing the Service Logs
+
 A sample log can be found in the logs/ directory of this repository.
- 
 The log can be viewed with the following command
  
  ```bash
@@ -94,25 +95,22 @@ The log can be viewed with the following command
 - When OpenVPN starts it sets a qlen=100. It might be interesting to see the effects of
 this on the openvpn speed.
 
-- 
-
-## To make the RTC work, one needs to update the cape-overlays in beaglebone. Which is done as follows:
-```bash
-sudo apt update
-sudo apt upgrade bb-cape-overlays
-```
+## To make the RTC work
 This will update the overlay with RTC-D3231 which we are using for our project. Next one needs to 
 activate the overlay so that it will load during the boot before anything else and the RTC can be read by 
 the hwclock.
 
 Now update the /boot/uEnv.txt
+
 ```bash
 uboot_overlay_addr4=/lib/firmware/BB-I2C2-RTC-DS3231.dtbo
 uboot_overlay_addr5=/lib/firmware/BB-UART1-00A0.dtbo
+uboot_overlay_addr6=/lib/firmware/BB-UART2-00A0.dtbo
+
+cape_enable=capemgr.enable_partno=BB-UART1,BB-UART2
 ```
 
-
-## Crontab for restarting the boxes every 20 minutes.
+## Crontab for restarting the boxes every 24 hours.
 
 ```bash
 sudo crontab -e
