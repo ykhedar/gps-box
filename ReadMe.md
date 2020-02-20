@@ -30,7 +30,7 @@ There are three main scripts:
 # Dependencies
 1. Install Some dependencies and clone the git repository.
 ```bash
-sudo apt update && sudo apt install -y git python-yaml python-serial openvpn usbutils usb-modeswitch libusb-1.0 build-essential && sudo apt upgrade bb-cape-overlays && rm -rf /var/lib/apt/lists/*
+sudo apt update && sudo apt install -y git python-yaml python-serial openvpn usbutils usb-modeswitch libusb-1.0 build-essential && sudo apt upgrade bb-cape-overlays && sudo rm -rf /var/lib/apt/lists/*
 
 cd ~ && git clone https://github.com/ykhedar/gps-box.git && git clone https://github.com/rtklibexplorer/RTKLIB.git &&
 cd ~/RTKLIB/app/str2str/gcc/ && make && sudo make install && rm -rf ~/RTKLIB
