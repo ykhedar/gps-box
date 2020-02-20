@@ -46,8 +46,7 @@ scp start_str2str.sh debian@10.8.0.[123456]1:/home/debian/start_str2str.sh
 3. Copy the ankommen.service to /etc/systemd/system/ folder. Now enable the service. Then Either Restart the system or
    Run start it manually for the first time to check if it works.
 ```bash
-sudo cp /home/debian/gps-box/aeroinspekt.service /etc/systemd/system/aeroinspekt.service
-sudo systemctl enable aeroinspekt.service
+sudo cp /home/debian/gps-box/aeroinspekt.service /etc/systemd/system/aeroinspekt.service && sudo systemctl enable aeroinspekt.service
 ```
 
 4. Check if the service is running
