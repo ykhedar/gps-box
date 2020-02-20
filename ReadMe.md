@@ -30,11 +30,19 @@ There are three main scripts:
 # Dependencies
 1. Install Some dependencies and clone the git repository.
 ```bash
-sudo apt update && sudo apt install -y git python-yaml python-serial openvpn usbutils
-cd ~ && git clone https://github.com/ykhedar/gps-box.git
+sudo apt update && sudo apt install -y git python-yaml python-serial openvpn usbutils usb-modeswitch libusb-1.0
+
+cd ~ && git clone https://github.com/ykhedar/gps-box.git && git clone https://github.com/rtklibexplorer/RTKLIB.git
+
+cd ~/RTKLIB/app/str2str/gcc/ && make && sudo make install
 ```
 
-2. Copy the *.ovpn file in the home directory to enable the ovpn.
+2. Copy the *.ovpn file in the home directory to enable the ovpn. From the folder boxes_copy
+
+```bash
+scp box[123456].ovpn debian@10.8.0.[123456]1:/home/debian/box[123456].ovpn
+scp start_str2str.sh debian@10.8.0.[123456]1:/home/debian/start_str2str.sh
+```
 
 3. Copy the ankommen.service to /etc/systemd/system/ folder. Now enable the service. Then Either Restart the system or
    Run start it manually for the first time to check if it works.
