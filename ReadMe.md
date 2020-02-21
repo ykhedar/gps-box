@@ -67,6 +67,19 @@ debian ALL=/sbin/shutdown
 debian ALL=NOPASSWD: /sbin/shutdown
 ```
 
+6. Create a folder logs in the home for logs.
+```bash
+mkdir ~/logs
+```
+
+Add the following line in fstab to automount the sd card as storage to store the logs.
+```bash
+/dev/mmcblk0p1 /home/debian/logs auto auto,rw,async,user,nofail 0 0
+```
+by opening the file as:
+```bash
+sudo nano fstab
+```
 
 # Don't
 - Don't remove the Event, gps-box folders and the *.ovpn file found in the /home/debian of the boxes
