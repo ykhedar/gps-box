@@ -38,6 +38,7 @@ MSG_NAV_SOL       = 0x6
 MSG_NAV_POSUTM    = 0x8
 MSG_NAV_VELNED    = 0x12
 MSG_NAV_VELECEF   = 0x11
+MSG_NAV_HPPOSLLH = 0x14
 MSG_NAV_TIMEGPS   = 0x20
 MSG_NAV_TIMEUTC   = 0x21
 MSG_NAV_CLOCK     = 0x22
@@ -365,6 +366,10 @@ msg_types = {
     (CLASS_NAV, MSG_NAV_POSLLH) : UBloxDescriptor('NAV_POSLLH',
                                                   '<IiiiiII', 
                                                   ['iTOW', 'Longitude', 'Latitude', 'height', 'hMSL', 'hAcc', 'vAcc']),
+    (CLASS_NAV, MSG_NAV_HPPOSLLH) : UBloxDescriptor('NAV_HPPOSLLH',
+                                                  '<B2BBIiiiibbbbII',
+                                                  ['version', 'reserved1[2]', 'flags', 'iTOW', 'lon', 'lat', 'height', 'hMSL',
+                                                   'lonHp', 'latHp', 'heightHp', 'hMSLHp', 'hAcc', 'vAcc']),
     (CLASS_NAV, MSG_NAV_VELNED) : UBloxDescriptor('NAV_VELNED',
                                                   '<IiiiIIiII', 
                                                   ['iTOW', 'velN', 'velE', 'velD', 'speed', 'gSpeed', 'heading', 
