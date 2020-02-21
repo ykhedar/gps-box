@@ -11,7 +11,7 @@ import logging
 import ublox
 import mcast
 
-MAIN_LOG_DIR="/home/debian/Event/projects/GWR/record/aeroinspekt/"
+MAIN_LOG_DIR="/home/debian/"
 
 CURRENT_DATE_TIME=datetime.datetime.now().isoformat().replace(":", "-")
 INIT_LOG_DIR=MAIN_LOG_DIR+"logs/init/"
