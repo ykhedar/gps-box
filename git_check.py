@@ -4,7 +4,7 @@ import os
 import time
 import datetime
 
-MAIN_LOG_DIR="/home/debian/Event/projects/GWR/record/aeroinspekt/"
+MAIN_LOG_DIR="/home/debian/"
 CURRENT_DATE_TIME=datetime.datetime.now().isoformat().replace(":", "-")
 GIT_LOG_DIR=MAIN_LOG_DIR+"logs/git/"
 GIT_LOG_FILE=GIT_LOG_DIR+CURRENT_DATE_TIME+".log"
