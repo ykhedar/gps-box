@@ -78,7 +78,7 @@ Add the following line in fstab to automount the sd card as storage to store the
 ```
 by opening the file as:
 ```bash
-sudo nano fstab
+sudo nano /etc/fstab
 ```
 
 # Don't
