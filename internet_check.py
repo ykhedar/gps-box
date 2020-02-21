@@ -4,7 +4,7 @@ import os
 import datetime
 import time
 
-MAIN_LOG_DIR="/home/debian/Event/projects/GWR/record/aeroinspekt/"
+MAIN_LOG_DIR="/home/debian/"
 CURRENT_DATE_TIME=datetime.datetime.now().isoformat().replace(":", "-")
 NET_LOG_DIR=MAIN_LOG_DIR+"logs/internet/"
 NET_LOG_FILE=NET_LOG_DIR+CURRENT_DATE_TIME+".log"
