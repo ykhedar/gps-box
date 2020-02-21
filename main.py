@@ -74,12 +74,14 @@ while True:
 		logging.info("No Message.")
 		break
 	msg_name = msg.name()
-	msg.unpack()
 	if msg_name == "NAV_TIMEGPS":
+		msg.unpack()
 		GPS_WEEK = str(msg.week)
 	if msg_name == "NAV_STATUS":
+		msg.unpack()
 		rtk_status = bin(msg.flags)[8]
 	if msg_name == "NAV_POSLLH":
+		msg.unpack()
 		if hasattr(msg, 'iTOW'):
 			string_payload = GPS_WEEK+","+ str(msg.iTOW) + "," +str(BOX_ID) + "," + str(KRANID)+ "," + \
 							 str(msg.Longitude) + "," + str(msg.Latitude) + "," + str(OFFSET) + "," + \
