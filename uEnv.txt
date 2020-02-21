@@ -1,9 +1,0 @@
-#Docs: http://elinux.org/Beagleboard:U-boot_partitioning_layout_2.0
-uname_r=4.14.49-ti-r54
-enable_uboot_overlays=1
-uboot_overlay_addr4=/lib/firmware/BB-I2C2-RTC-DS3231.dtbo
-uboot_overlay_addr5=/lib/firmware/BB-UART1-00A0.dtbo
-cape_enable=capemgr.enable_partno=BB-UART1
-uboot_overlay_pru=/lib/firmware/AM335X-PRU-UIO-00A0.dtbo
-enable_uboot_cape_universal=1
-cmdline=coherent_pool=1M net.ifnames=0 quiet
