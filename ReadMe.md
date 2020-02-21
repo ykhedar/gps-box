@@ -81,8 +81,8 @@ by opening the file as:
 sudo nano /etc/fstab
 ```
 
-# Don't
-- Don't remove the Event, gps-box folders and the *.ovpn file found in the /home/debian of the boxes
+# Don't do the following
+- Don't remove the gps-box folders and the *.ovpn file found in the /home/debian of the boxes
 
 
 # Important points:
@@ -131,7 +131,3 @@ Put this crontab with sudo. This reboots the board every day at 03:00 hrs
 ```bash
 * 3 * * * /sbin/shutdown -r now
 ```
-
-
-# Logging.
-Logs are stored at /home/debian/Event/projects/GWR/record because, the memory card is mounted at this location
