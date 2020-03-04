@@ -82,8 +82,8 @@ while True:
 		rtk_status = bin(msg.flags)[8]
 	if msg_name == "NAV_HPPOSLLH":
 		msg.unpack()
-		high_p_lon = msg.lon + msg.lonHp * 0.01
-		high_p_lat = msg.lat + msg.latHp * 0.01
+		high_p_lon = (msg.lon + msg.lonHp * 0.01) * 0.0000001
+		high_p_lat = (msg.lat + msg.latHp * 0.01) * 0.0000001
 		if hasattr(msg, 'iTOW'):
 			string_payload = GPS_WEEK+"," + str(msg.iTOW) + "," + str(BOX_ID) + "," + str(KRANID) + "," + \
 							 str(high_p_lon) + "," + str(high_p_lat) + "," + str(OFFSET) + "," + \
