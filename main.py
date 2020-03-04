@@ -80,11 +80,13 @@ while True:
 	if msg_name == "NAV_STATUS":
 		msg.unpack()
 		rtk_status = bin(msg.flags)[8]
-	if msg_name == "NAV_POSLLH":
+	if msg_name == "NAV_HPPOSLLH":
 		msg.unpack()
+		high_p_lon = msg.lon + msg.lonHp * 0.01
+		high_p_lat = msg.lat + msg.latHp * 0.01
 		if hasattr(msg, 'iTOW'):
-			string_payload = GPS_WEEK+","+ str(msg.iTOW) + "," +str(BOX_ID) + "," + str(KRANID)+ "," + \
-							 str(msg.Longitude) + "," + str(msg.Latitude) + "," + str(OFFSET) + "," + \
+			string_payload = GPS_WEEK+"," + str(msg.iTOW) + "," + str(BOX_ID) + "," + str(KRANID) + "," + \
+							 str(high_p_lon) + "," + str(high_p_lat) + "," + str(OFFSET) + "," + \
 							 str(msg.hAcc) + "," + str(rtk_status)
 			# GPS-week, GPS-TimeOfWeek,BOX-ID,Crane-ID,LONGITUDE, LATITUDE, OFFSET, Horizontal Accuracy (mm), RTK-Status, HASH
 			msg_to_send = string_payload + "," + str(len(string_payload))
