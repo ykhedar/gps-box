@@ -11,12 +11,12 @@ BOX2:
 BOX3: 
   IP: '10.8.0.31'
   OFFSET: '6'
-  KRANID: '25k'
+  KRANID: '25g'
 
 BOX5: 
   IP: '10.8.0.51'
   OFFSET: '6'
-  KRANID: '25g'
+  KRANID: '25k'
 
 BOX4: 
   IP: '10.8.0.41'
