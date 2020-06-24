@@ -1,4 +1,5 @@
 # gps-box
+
 ## Installing Debian on Beaglebone Black.
 ### Follow the instructions here:
 https://beagleboard.org/getting-started
