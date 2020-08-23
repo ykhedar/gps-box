@@ -1,22 +1,22 @@
 BOX1: 
   IP: '10.8.0.11'
   OFFSET: '2'
-  KRANID: '24k'
+  KRANID: '25k'
   
 BOX2: 
   IP: '10.8.0.21'
   OFFSET: '2'
-  KRANID: '24g'
+  KRANID: '25g'
 
 BOX3: 
   IP: '10.8.0.31'
   OFFSET: '2'
-  KRANID: '25g'
+  KRANID: '26k'
 
 BOX5: 
   IP: '10.8.0.51'
   OFFSET: '2'
-  KRANID: '25k'
+  KRANID: '26g'
 
 BOX4: 
   IP: '10.8.0.41'
