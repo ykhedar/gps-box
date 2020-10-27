@@ -68,6 +68,8 @@ logging.info("Logging Processed data to the file: " + str(BOX_POS_LOG_FILE))
 logging.info("Starting Data acquisition loop from UBLOX. ")
 GPS_WEEK = "null"
 rtk_status = 0
+current_heading = 999
+current_poslength = 999
 while True:
 	msg = dev.receive_message(ignore_eof=True)
 	if msg is None:
@@ -87,11 +89,34 @@ while True:
 		if hasattr(msg, 'iTOW'):
 			string_payload = GPS_WEEK+"," + str(msg.iTOW) + "," + str(BOX_ID) + "," + str(KRANID) + "," + \
 							 str(high_p_lon) + "," + str(high_p_lat) + "," + str(OFFSET) + "," + \
-							 str(msg.hAcc) + "," + str(rtk_status)
+							 str(msg.hAcc) + "," + str(rtk_status) + "," + str(current_heading) + "," + str(current_poslength)
 			# GPS-week, GPS-TimeOfWeek,BOX-ID,Crane-ID,LONGITUDE, LATITUDE, OFFSET, Horizontal Accuracy (mm), RTK-Status, HASH
 			msg_to_send = string_payload + "," + str(len(string_payload))
 			multicast_sender.send_data(msg_to_send)
 			msg_to_write = msg_to_send + "\n"
 			pos_log_file.write(msg_to_write)
+	if msg_name == "NAV_RELPOSNED":
+		print("NAVRELPOSNED message received.")
+		msg.unpack()
+		# ['version', 'reserved0', 'refStationId[2]', 'iTOW', 'relPosN',
+		# 'relPosE', 'relPosD', 'relPosLength',
+		# 'relPosHeading', 'reserved1[4]', 'relPosHPN', 'relPosHPE',
+		# 'relPosHPD', 'relPosHPLen', 'accN', 'accE', 'accD',
+		# 'accLength', 'accHeading', 'reserved2[4]', 'flags']
+		print(msg.relPosN, msg.relPosE, msg.relPosD)
+		heading = msg.relPosHeading * 0.00001
+		hAcc_PosLength = msg.relPosLength + 0.01 * msg.relPosHPLen
+		string_payload_2 = GPS_WEEK + "," + str(msg.iTOW) + "," + str(msg.relPosN) + "," + str(msg.relPosE) + "," + \
+						 str(msg.relPosD) + "," + str(msg.relPosLength) + "," + str(heading) + "," + \
+						 str(hAcc_PosLength) + "," + str(msg.accLength) + "," + str(msg.accHeading) + "," + "navrelposned"
+
+		msg_to_send_2 = string_payload_2 + "," + str(len(string_payload_2))
+		#multicast_sender.send_data(msg_to_send)
+		msg_to_write_2 = msg_to_send_2 + "\n"
+		pos_log_file.write(msg_to_write_2)
+
+		current_heading = heading
+		current_poslength = hAcc_PosLength
+
 pos_log_file.close()
 
