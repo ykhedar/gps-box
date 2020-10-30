@@ -90,7 +90,7 @@ while True:
 			string_payload = GPS_WEEK+"," + str(msg.iTOW) + "," + str(BOX_ID) + "," + str(KRANID) + "," + \
 							 str(high_p_lon) + "," + str(high_p_lat) + "," + str(OFFSET) + "," + \
 							 str(msg.hAcc) + "," + str(rtk_status) + "," + str(current_heading) + "," + str(current_poslength)
-			# GPS-week, GPS-TimeOfWeek,BOX-ID,Crane-ID,LONGITUDE, LATITUDE, OFFSET, Horizontal Accuracy (mm), RTK-Status, HASH
+			# GPS-week, GPS-TimeOfWeek,BOX-ID,Crane-ID,LONGITUDE, LATITUDE, OFFSET, Horizontal Accuracy (mm), RTK-Status, heading (deg), relpos(mm)
 			msg_to_send = string_payload + "," + str(len(string_payload))
 			multicast_sender.send_data(msg_to_send)
 			msg_to_write = msg_to_send + "\n"
