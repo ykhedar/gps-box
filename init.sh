@@ -32,3 +32,7 @@ cd /home/debian/gps-box && python git_check.py &
 
 sleep 15
 cd /home/debian && sh start_str2str.sh &
+
+# For the RTK Base these script also need to run
+cd /home/debian && sh start_str2str_rtcm_in.sh &
+cd /home/debian && sh start_str2str_rtcm_out.sh &
